@@ -5,6 +5,12 @@
 [submodule "TMessagesProj/jni/ffmpeg/build_ffmpeg/ffmpeg"]
 	path = TMessagesProj/jni/ffmpeg/build_ffmpeg/ffmpeg
 	url = https://github.com/FFmpeg/FFmpeg
+	ignore = all
 [submodule "TMessagesProj/jni/ffmpeg/build_ffmpeg/vpx-android/libvpx"]
 	path = TMessagesProj/jni/ffmpeg/build_ffmpeg/vpx-android/libvpx
 	url = https://github.com/webmproject/libvpx
+	ignore = all
+[submodule "TMessagesProj/jni/libwebp"]
+	path = TMessagesProj/jni/libwebp
+	url = https://github.com/webmproject/libwebp
+	ignore = all
