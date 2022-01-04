@@ -26,7 +26,6 @@ import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.CustomTabsCopyReceiver;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.messenger.ShareBroadcastReceiver;
@@ -188,7 +187,6 @@ public class Browser {
         if (tryTelegraph) {
             try {
                 String host = uri.getHost().toLowerCase();
-                if (isTelegraphUrl(host, true) || uri.toString().toLowerCase().contains("telegram.org/faq") || uri.toString().toLowerCase().contains("telegram.org/privacy")) {
                     final AlertDialog[] progressDialog = new AlertDialog[]{new AlertDialog(context, 3)};
 
                     Uri finalUri = uri;
@@ -226,7 +224,6 @@ public class Browser {
                         }
                     }, 1000);
                     return;
-                }
             } catch (Exception ignore) {
 
             }
@@ -416,9 +413,7 @@ public class Browser {
                 return true;
             }
         } else if (all) {
-            if (host.endsWith("telegram.org") || host.endsWith("telegra.ph") || host.endsWith("telesco.pe")) {
-                return true;
-            }
+            return host.endsWith("telegram.org") || host.endsWith("telegra.ph") || host.endsWith("telesco.pe");
         }
         return false;
     }

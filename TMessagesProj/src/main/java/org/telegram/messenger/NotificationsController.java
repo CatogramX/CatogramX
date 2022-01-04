@@ -42,7 +42,6 @@ import android.os.Build;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.provider.Settings;
-
 import androidx.collection.LongSparseArray;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -59,6 +58,7 @@ import android.util.SparseArray;
 import org.telegram.messenger.support.LongSparseIntArray;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLRPC;
+import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.BubbleActivity;
 import org.telegram.ui.LaunchActivity;
 import org.telegram.ui.PopupNotificationActivity;
@@ -70,6 +70,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+
+import ua.itaysonlab.catogram.CGFeatureHooks;
+import ua.itaysonlab.catogram.CatogramConfig;
 
 public class NotificationsController extends BaseController {
 
@@ -138,7 +141,7 @@ public class NotificationsController extends BaseController {
         }
         audioManager = (AudioManager) ApplicationLoader.applicationContext.getSystemService(Context.AUDIO_SERVICE);
     }
-    
+
     private static volatile NotificationsController[] Instance = new NotificationsController[UserConfig.MAX_ACCOUNT_COUNT];
 
     public static NotificationsController getInstance(int num) {
@@ -3324,11 +3327,7 @@ public class NotificationsController extends BaseController {
             AudioAttributes.Builder builder = new AudioAttributes.Builder();
             builder.setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION);
             builder.setUsage(AudioAttributes.USAGE_NOTIFICATION);
-            if (sound != null) {
-                notificationChannel.setSound(sound, builder.build());
-            } else {
-                notificationChannel.setSound(null, builder.build());
-            }
+            notificationChannel.setSound(sound, builder.build());
             if (BuildVars.LOGS_ENABLED) {
                 FileLog.d("create new channel " + channelId);
             }
@@ -3503,6 +3502,10 @@ public class NotificationsController extends BaseController {
                 notifyDisabled = true;
             }
 
+            if (CatogramConfig.INSTANCE.getSilenceNonContacts() && getContactsController().contactsDict.get(userId) == null) {
+                notifyDisabled = true;
+            }
+
             if (!notifyDisabled && dialog_id == override_dialog_id && chat != null) {
                 int notifyMaxCount;
                 int notifyDelay;
@@ -3669,7 +3672,7 @@ public class NotificationsController extends BaseController {
             PendingIntent contentIntent = PendingIntent.getActivity(ApplicationLoader.applicationContext, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
             mBuilder.setContentTitle(name)
-                    .setSmallIcon(R.drawable.notification)
+                    .setSmallIcon(CGFeatureHooks.getProperNotificationIcon())
                     .setAutoCancel(true)
                     .setNumber(total_unread_count)
                     .setContentIntent(contentIntent)
@@ -3677,7 +3680,8 @@ public class NotificationsController extends BaseController {
                     .setGroupSummary(true)
                     .setShowWhen(true)
                     .setWhen(((long) lastMessageObject.messageOwner.date) * 1000)
-                    .setColor(0xff11acfa);
+                    //.setPublicVersion(publicNotification)
+                    .setColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueHeader));
 
             long[] vibrationPattern = null;
             Uri sound = null;
@@ -4378,18 +4382,18 @@ public class NotificationsController extends BaseController {
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(ApplicationLoader.applicationContext)
                     .setContentTitle(name)
-                    .setSmallIcon(R.drawable.notification)
+                    .setSmallIcon(CGFeatureHooks.getProperNotificationIcon())
                     .setContentText(text.toString())
                     .setAutoCancel(true)
                     .setNumber(messageObjects.size())
-                    .setColor(0xff11acfa)
+                    .setColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueHeader))
                     .setGroupSummary(false)
                     .setWhen(date)
                     .setShowWhen(true)
                     .setStyle(messagingStyle)
                     .setContentIntent(contentIntent)
                     .extend(wearableExtender)
-                    .setSortKey(String.valueOf(Long.MAX_VALUE - date))
+                     .setSortKey(String.valueOf(Long.MAX_VALUE - date))
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE);
 
             Intent dismissIntent = new Intent(ApplicationLoader.applicationContext, NotificationDismissReceiver.class);

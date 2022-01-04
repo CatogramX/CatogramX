@@ -20,6 +20,7 @@ import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 
 import org.telegram.messenger.AndroidUtilities;
+
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.LocationController;
 import org.telegram.messenger.MessageObject;
@@ -45,8 +46,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.gms.vision.Frame;
 
 public class LocationActivityAdapter extends BaseLocationAdapter implements LocationController.LocationFetchCallback {
 

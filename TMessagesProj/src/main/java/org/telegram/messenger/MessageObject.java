@@ -1728,18 +1728,10 @@ public class MessageObject {
             if (newMessage.media != null && !(newMessage.media instanceof TLRPC.TL_messageMediaEmpty) && !(newMessage.media instanceof TLRPC.TL_messageMediaWebPage)/* && TextUtils.isEmpty(newMessage.message)*/) {
                 boolean changedCaption;
                 boolean changedMedia;
-                if (!TextUtils.equals(newMessage.message, oldMessage.message)) {
-                    changedCaption = true;
-                } else {
-                    changedCaption = false;
-                }
-                if (newMessage.media.getClass() != oldMessage.media.getClass() ||
+                changedCaption = !TextUtils.equals(newMessage.message, oldMessage.message);
+                changedMedia = newMessage.media.getClass() != oldMessage.media.getClass() ||
                         newMessage.media.photo != null && oldMessage.media.photo != null && newMessage.media.photo.id != oldMessage.media.photo.id ||
-                        newMessage.media.document != null && oldMessage.media.document != null && newMessage.media.document.id != oldMessage.media.document.id) {
-                    changedMedia = true;
-                } else {
-                    changedMedia = false;
-                }
+                        newMessage.media.document != null && oldMessage.media.document != null && newMessage.media.document.id != oldMessage.media.document.id;
                 if (changedMedia && changedCaption) {
                     messageText = replaceWithLink(LocaleController.getString("EventLogEditedMediaCaption", R.string.EventLogEditedMediaCaption), "un1", fromUser);
                 } else if (changedCaption) {
@@ -3369,9 +3361,7 @@ public class MessageObject {
                 String fileName = FileLoader.getDocumentFileName(document);
                 if (fileName.startsWith("tg_secret_sticker") && fileName.endsWith("json")) {
                     return true;
-                } else if (fileName.endsWith(".svg")) {
-                    return true;
-                }
+                } else return fileName.endsWith(".svg");
             }
         }
         return false;
@@ -3390,9 +3380,7 @@ public class MessageObject {
                     round = attribute.round_message;
                 }
             }
-            if (round && width <= 1280 && height <= 1280) {
-                return true;
-            }
+            return round && width <= 1280 && height <= 1280;
         }
         return false;
     }
@@ -3411,9 +3399,8 @@ public class MessageObject {
                     height = attribute.h;
                 }
             }
-            if (/*animated && */width <= 1280 && height <= 1280) {
-                return true;
-            }
+            /*animated && */
+            return width <= 1280 && height <= 1280;
         }
         return false;
     }
@@ -3432,9 +3419,7 @@ public class MessageObject {
                     height = attribute.h;
                 }
             }
-            if (animated && width <= 1280 && height <= 1280) {
-                return true;
-            }
+            return animated && width <= 1440 && height <= 1440;
         }
         return false;
     }
@@ -4328,9 +4313,7 @@ public class MessageObject {
             if (isSupergroup()) {
                 return false;
             }
-            if (messageOwner.peer_id.channel_id != 0 && (messageOwner.via_bot_id == 0 && messageOwner.reply_to == null || type != TYPE_STICKER && type != TYPE_ANIMATED_STICKER)) {
-                return true;
-            }
+            return messageOwner.peer_id.channel_id != 0 && (messageOwner.via_bot_id == 0 && messageOwner.reply_to == null || type != TYPE_STICKER && type != TYPE_ANIMATED_STICKER);
         }
         return false;
     }
@@ -4921,10 +4904,7 @@ public class MessageObject {
                 return attribute.supports_streaming;
             }
         }
-        if (SharedConfig.streamMkv && "video/x-matroska".equals(document.mime_type)) {
-            return true;
-        }
-        return false;
+        return SharedConfig.streamMkv && "video/x-matroska".equals(document.mime_type);
     }
 
     public static long getDialogId(TLRPC.Message message) {
@@ -5106,11 +5086,9 @@ public class MessageObject {
             }
             if (!TextUtils.isEmpty(document.mime_type)) {
                 String mime = document.mime_type.toLowerCase();
-                if (mime.equals("audio/flac") || mime.equals("audio/ogg") || mime.equals("audio/opus") || mime.equals("audio/x-opus+ogg")) {
+                if (mime.equals("audio/flac") || mime.equals("audio/ogg") || mime.equals("audio/opus") || mime.equals("audio/x-opus+ogg") || mime.equals("audio/wav") || mime.equals("audio/x-wav")) {
                     return true;
-                } else if (mime.equals("application/octet-stream") && FileLoader.getDocumentFileName(document).endsWith(".opus")) {
-                    return true;
-                }
+                } else return mime.equals("application/octet-stream") && FileLoader.getDocumentFileName(document).endsWith(".opus");
             }
         }
         return false;
@@ -5867,8 +5845,8 @@ public class MessageObject {
         if (message.out && chat != null && chat.megagroup && (chat.creator || chat.admin_rights != null && chat.admin_rights.pin_messages || chat.default_banned_rights != null && !chat.default_banned_rights.pin_messages)) {
             return true;
         }
-        //
         return false;
+        //
     }
 
     public static boolean canEditMessageScheduleTime(int currentAccount, TLRPC.Message message, TLRPC.Chat chat) {
@@ -5881,10 +5859,7 @@ public class MessageObject {
         if (!ChatObject.isChannel(chat) || chat.megagroup || chat.creator) {
             return true;
         }
-        if (chat.admin_rights != null && (chat.admin_rights.edit_messages || message.out)) {
-            return true;
-        }
-        return false;
+        return chat.admin_rights != null && (chat.admin_rights.edit_messages || message.out);
     }
 
     public static boolean canEditMessage(int currentAccount, TLRPC.Message message, TLRPC.Chat chat, boolean scheduled) {
@@ -5926,13 +5901,11 @@ public class MessageObject {
                     message.media == null);
         }
         if (chat != null && chat.megagroup && message.out || chat != null && !chat.megagroup && (chat.creator || chat.admin_rights != null && (chat.admin_rights.edit_messages || message.out && chat.admin_rights.post_messages)) && message.post) {
-            if (message.media instanceof TLRPC.TL_messageMediaPhoto ||
+            return message.media instanceof TLRPC.TL_messageMediaPhoto ||
                     message.media instanceof TLRPC.TL_messageMediaDocument && !isStickerMessage(message) && !isAnimatedStickerMessage(message) ||
                     message.media instanceof TLRPC.TL_messageMediaEmpty ||
                     message.media instanceof TLRPC.TL_messageMediaWebPage ||
-                    message.media == null) {
-                return true;
-            }
+                    message.media == null;
         }
         return false;
     }
