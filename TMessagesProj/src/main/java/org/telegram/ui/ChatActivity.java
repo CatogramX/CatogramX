@@ -22128,7 +22128,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         selectedMessagesCountTextView.setNumber(selectedMessagesIds[0].size() + selectedMessagesIds[1].size(), false);
-        updateMultipleSelection(actionMode);
+        //updateMultipleSelection(actionMode);
         updateVisibleRows();
         if (chatActivityEnterView != null) {
             chatActivityEnterView.hideBotCommands();
