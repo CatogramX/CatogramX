@@ -4421,6 +4421,7 @@ public class LaunchActivity extends AppCompatActivity implements  BottomSlideFra
 
     @Override
     public void onMultiWindowModeChanged(boolean isInMultiWindowMode) {
+        super.onMultiWindowModeChanged(isInMultiWindowMode);
         AndroidUtilities.isInMultiwindow = isInMultiWindowMode;
         checkLayout();
     }
