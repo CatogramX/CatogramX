@@ -20,7 +20,7 @@
 
 darwin=linux
 
-#set -e
+set -e
 
 cd vpx-android
 export ANDROID_NDK=$NDK
@@ -33,8 +33,8 @@ NDK=$NDK_r10e
 function build_one {
 
 echo "Cleaning..."
-rm -f config.h
-make clean
+rm -f config.h || true
+make clean || true
 
 echo "Configuring..."
 
