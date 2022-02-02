@@ -11,18 +11,18 @@
 # 2) set NDK_r10e and NDK variables
 # 3) download lib vpx
 # 4) copy libvpx to vpx-android folder and rename as libvpx
-# 5) copy build_ffmpeg foleder in ffmepg directory
+# 5) copy ffmepg directory into build_ffmpeg
 # 6) run build_ffmpeg.sh
 # 7) see compiled library in build_ffmpeg/adnroid folder
 
-NDK="/opt/android/ndk/android-ndk-r21e"
-NDK_r10e="/opt/android/ndk/android-ndk-r10e"
+#NDK="/opt/android/ndk/android-ndk-r21e"
+#NDK_r10e="/opt/android/ndk/android-ndk-r10e"
 
 #build vpx
 cd ./vpx-android
 export ANDROID_NDK=$NDK
 sh build-vpx.sh
-cd ../..
+cd ../ffmpeg
 
 
 NDK=$NDK_r10e
@@ -164,10 +164,10 @@ PREFIX=./android/x86
 ADDITIONAL_CONFIGURE_FLAG="--disable-mmx --disable-yasm"
 build_one
 
-  if [[ -e ./build_ffmpeg/android ]]; then
-      rm -rf ./build_ffmpeg/android
+  if [[ -e ../android ]]; then
+      rm -rf ../android
   fi
 
-mv ./android ./build_ffmpeg/
+mv ./android ../build_ffmpeg/
 
 
