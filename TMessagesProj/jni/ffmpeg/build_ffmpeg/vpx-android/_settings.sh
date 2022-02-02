@@ -9,7 +9,7 @@ fi
 
 set -u
 
-ANDROID_API=21
+ANDROID_API=16
 
 ABIS=("armeabi-v7a" "arm64-v8a" "x86" "x86_64")
 

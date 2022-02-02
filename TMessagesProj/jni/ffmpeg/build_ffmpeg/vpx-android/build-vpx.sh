@@ -48,7 +48,7 @@ if [[ $1 =~ x86.* ]]; then
 fi
 
   ASFLAGS="-D__ANDROID__" ./configure \
-    --extra-cflags="-isystem ${NDK_SYSROOT}/usr/include/${NDK_ABIARCH} -isystem ${NDK_SYSROOT}/usr/include -D__ANDROID_API__=21 -D__ANDROID__" \
+    --extra-cflags="-D__ANDROID_API__=16 -D__ANDROID__" \
     --libc=${NDK_SYSROOT} \
     --prefix=${PREFIX} \
     --target=${TARGET} \
