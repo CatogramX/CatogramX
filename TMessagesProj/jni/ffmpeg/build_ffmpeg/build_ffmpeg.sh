@@ -18,10 +18,13 @@
 #NDK="/opt/android/ndk/android-ndk-r21e"
 #NDK_r10e="/opt/android/ndk/android-ndk-r10e"
 
-#build vpx
-cd ./vpx-android
+darwin=linux
+
+#set -e
+
+cd vpx-android
 export ANDROID_NDK=$NDK
-sh build-vpx.sh
+bash build-vpx.sh
 cd ../ffmpeg
 
 
@@ -30,7 +33,7 @@ NDK=$NDK_r10e
 function build_one {
 
 echo "Cleaning..."
-rm config.h
+rm -f config.h
 make clean
 
 echo "Configuring..."
@@ -45,7 +48,7 @@ LIBS=" -L${PREFIX}/lib"
 --arch=$ARCH \
 --target-os=linux \
 --enable-cross-compile \
---yasmexe=$NDK/prebuilt/darwin-x86_64/bin/yasm \
+--yasmexe=$NDK/prebuilt/$darwin-x86_64/bin/yasm \
 --prefix=$PREFIX \
 --enable-pic \
 --disable-shared \
@@ -102,7 +105,7 @@ make -j8 install
 }
 
 #x86_64
-PREBUILT=$NDK/toolchains/x86_64-4.9/prebuilt/darwin-x86_64
+PREBUILT=$NDK/toolchains/x86_64-4.9/prebuilt/$darwin-x86_64
 PLATFORM=$NDK/platforms/android-21/arch-x86_64
 LD=$PREBUILT/bin/x86_64-linux-android-ld
 AR=$PREBUILT/bin/x86_64-linux-android-ar
@@ -112,12 +115,12 @@ CC=$PREBUILT/bin/x86_64-linux-android-gcc
 CROSS_PREFIX=$PREBUILT/bin/x86_64-linux-android-
 ARCH=x86_64
 CPU=x86_64
-PREFIX=./android/x86_64
+PREFIX=../android/x86_64
 ADDITIONAL_CONFIGURE_FLAG="--disable-mmx --disable-inline-asm"
 build_one
 
 #arm64-v8a
-PREBUILT=$NDK/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64
+PREBUILT=$NDK/toolchains/aarch64-linux-android-4.9/prebuilt/$darwin-x86_64
 PLATFORM=$NDK/platforms/android-21/arch-arm64
 LD=$PREBUILT/bin/aarch64-linux-android-ld
 AR=$PREBUILT/bin/aarch64-linux-android-ar
@@ -128,12 +131,12 @@ CROSS_PREFIX=$PREBUILT/bin/aarch64-linux-android-
 ARCH=arm64
 CPU=arm64-v8a
 OPTIMIZE_CFLAGS=
-PREFIX=./android/arm64-v8a
+PREFIX=../android/arm64-v8a
 ADDITIONAL_CONFIGURE_FLAG="--enable-neon --enable-optimizations"
 build_one
 
 #arm v7n
-PREBUILT=$NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64
+PREBUILT=$NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/$darwin-x86_64
 PLATFORM=$NDK/platforms/android-16/arch-arm
 LD=$PREBUILT/bin/arm-linux-androideabi-ld
 AR=$PREBUILT/bin/arm-linux-androideabi-ar
@@ -144,12 +147,12 @@ CROSS_PREFIX=$PREBUILT/bin/arm-linux-androideabi-
 ARCH=arm
 CPU=armv7-a
 OPTIMIZE_CFLAGS="-marm -march=$CPU"
-PREFIX=./android/armeabi-v7a
+PREFIX=../android/armeabi-v7a
 ADDITIONAL_CONFIGURE_FLAG=--enable-neon
 build_one
 
 #x86
-PREBUILT=$NDK/toolchains/x86-4.9/prebuilt/darwin-x86_64
+PREBUILT=$NDK/toolchains/x86-4.9/prebuilt/$darwin-x86_64
 PLATFORM=$NDK/platforms/android-16/arch-x86
 LD=$PREBUILT/bin/i686-linux-android-ld
 AR=$PREBUILT/bin/i686-linux-android-ar
@@ -160,14 +163,9 @@ CROSS_PREFIX=$PREBUILT/bin/i686-linux-android-
 ARCH=x86
 CPU=i686
 OPTIMIZE_CFLAGS="-march=$CPU"
-PREFIX=./android/x86
+PREFIX=../android/x86
 ADDITIONAL_CONFIGURE_FLAG="--disable-mmx --disable-yasm"
 build_one
 
-  if [[ -e ../android ]]; then
-      rm -rf ../android
-  fi
-
-mv ./android ../build_ffmpeg/
-
-
+cd ..
+cp -r android/* ..
