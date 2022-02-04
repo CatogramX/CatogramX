@@ -1024,7 +1024,7 @@ public class TranslateAlert extends Dialog {
                         updateSourceLanguage();
                     } else {
                         fromLanguage = sourceLanguage;
-                        subtitleFromView.toTextView.setText(fromLanguage);
+                        subtitleFromView.set(fromLanguage);
                         subtitleToView.setText(targetLanguage);
                     }
                 }
