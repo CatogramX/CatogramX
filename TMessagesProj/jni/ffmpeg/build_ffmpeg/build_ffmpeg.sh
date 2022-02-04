@@ -29,6 +29,7 @@ cd ../ffmpeg
 
 
 NDK=$NDK_r10e
+export ANDROID_NDK=$NDK
 
 function build_one {
 
