@@ -329,8 +329,8 @@ class ChatsPreferencesEntry : BasePreferencesEntry {
             }*/
 
             switch {
-                title = LocaleController.getString("CG_doubleTapReact", R.string.CG_doubleTapReact)
-                summary = LocaleController.getString("CG_doubleTapReact_Desc", R.string.CG_doubleTapReact_Desc)
+                title = LocaleController.getString("CX_DoubleTapReact", R.string.CX_doubleTapReact)
+                summary = LocaleController.getString("CX_DoubleTapReact_Desc", R.string.CX_doubleTapReact_Desc)
 
                 contract({
                     return@contract CatogramConfig.disableDoubleTabReact
