@@ -37,7 +37,7 @@ object CatogramConfig {
     var hideKeyboardOnScroll by sharedPreferences.boolean("cg_hidekbd", false)
     var newTabs_noUnread by sharedPreferences.boolean("cg_notabnum", false)
     var newTabs_hideAllChats by sharedPreferences.boolean("cg_ntallchats", false)
-
+    var disableDoubleTabReact by sharedPreferences.boolean("cg_disable_double_tab_react", false)
     var redesign_messageOption by sharedPreferences.int("cg_messageOption", 3)
     var translateOptions by sharedPreferences.int("cg_trOptions", 0)
     var redesign_forceDrawerIconsOption by sharedPreferences.int("cg_drawerIconsOption", 0)

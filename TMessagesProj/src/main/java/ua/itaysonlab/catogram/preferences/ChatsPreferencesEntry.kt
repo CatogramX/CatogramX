@@ -328,6 +328,17 @@ class ChatsPreferencesEntry : BasePreferencesEntry {
                 }
             }*/
 
+            switch {
+                title = LocaleController.getString("CG_doubleTapReact", R.string.CG_doubleTapReact)
+                summary = LocaleController.getString("CG_doubleTapReact_Desc", R.string.CG_doubleTapReact_Desc)
+
+                contract({
+                    return@contract CatogramConfig.disableDoubleTabReact
+                }) {
+                    CatogramConfig.disableDoubleTabReact = it
+                }
+            }
+
             list {
                 title = LocaleController.getString("CG_MsgSlideAction", R.string.CG_MsgSlideAction)
 

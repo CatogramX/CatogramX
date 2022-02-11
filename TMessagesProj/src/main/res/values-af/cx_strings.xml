@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+
+<resources>
+    <string name="CX_doubleTapReact">Disable quick reactions</string>
+    <string name="CX_doubleTapReact_Desc">Disabling this option will allow you not to send reaction to messages by accidental double tap</string>
+</resources>
