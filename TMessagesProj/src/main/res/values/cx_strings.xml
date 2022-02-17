@@ -71,7 +71,7 @@
     <string name="SaveToDownloadCount_few">Saving %1$d files to downloads</string>
     <string name="SaveToDownloadCount_many">Saving %1$d files to downloads</string>
     <string name="SaveToDownloadCount_other">Saving %1$d files to downloads</string>
-	<string name="CX_ShowSeconds">Show seconds in timestamps</string>
+    <string name="CX_ShowSeconds">Show seconds in timestamps</string>
 
     <!-- CX 4.1.3 -->
     <string name="CX_DisableParseEntities">Disable Parse Entities</string>
