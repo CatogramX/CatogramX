@@ -27,16 +27,16 @@
     <string name="CX_ThemePreviewDialogMessage4">欣赏这个新设计 :)</string>
     <string name="CX_SystemFonts">使用系统默认字体</string>
     <string name="CX_Secrets">隐私菜单</string>
-    <string name="CX_ChangeIcon_Black_Reg">CatoX暗黑图标 (Qirkl绘制)</string>
-    <string name="CX_ChangeIcon_Blue_Reg">CatoX天蓝图标 (Qirkl绘制)</string>
-    <string name="CX_ChangeIcon_Cyan_Reg">CatoX青蓝图标 (Qirkl绘制)</string>
-    <string name="CX_ChangeIcon_Green_Reg">CatoX草绿图标 (Qirkl绘制)</string>
-    <string name="CX_ChangeIcon_Orange_Reg">CatoX橙黄图标 (Qirkl绘制)</string>
-    <string name="CX_ChangeIcon_Pink_Reg">CatoX桃粉图标 (Qirkl绘制)</string>
-    <string name="CX_ChangeIcon_Red_Reg">CatoX喜红图标 (Qirkl绘制)</string>
-    <string name="CX_ChangeIcon_Taffy_Reg">CatoX糖心图标 (Qirkl绘制)</string>
-    <string name="CX_ChangeIcon_Purple_Reg">CatoX紫米图标 (Qirkl绘制)</string>
-    <string name="CX_ChangeIcon_Yellow_Reg">CatoX金黄图标 (Qirkl绘制)</string>
+    <string name="CX_ChangeIcon_Black_Reg">CatoX暗黑图标（Qirkl绘制）</string>
+    <string name="CX_ChangeIcon_Blue_Reg">CatoX天蓝图标（Qirkl绘制）</string>
+    <string name="CX_ChangeIcon_Cyan_Reg">CatoX青蓝图标（Qirkl绘制）</string>
+    <string name="CX_ChangeIcon_Green_Reg">CatoX草绿图标（Qirkl绘制）</string>
+    <string name="CX_ChangeIcon_Orange_Reg">CatoX橙黄图标（Qirkl绘制）</string>
+    <string name="CX_ChangeIcon_Pink_Reg">CatoX桃粉图标（Qirkl绘制）</string>
+    <string name="CX_ChangeIcon_Red_Reg">CatoX喜红图标（Qirkl绘制）</string>
+    <string name="CX_ChangeIcon_Taffy_Reg">CatoX糖心图标（Qirkl绘制）</string>
+    <string name="CX_ChangeIcon_Purple_Reg">CatoX紫米图标（Qirkl绘制）</string>
+    <string name="CX_ChangeIcon_Yellow_Reg">CatoX金黄图标（Qirkl绘制）</string>
     <string name="CX_ChangeIcon_Monet">CatoX跟随系统主题色</string>
     <string name="CX_DisableReactionAnimDesc">在点击回应时的动画效果</string>
     <string name="CX_DB_AccountsHint">双层按钮允许您为不同的账号设置不同的密码。
@@ -51,7 +51,7 @@
     <string name="CX_EnableSAF">强制启用SAF</string>
     <string name="CX_Website">访问官方网站</string>
     <string name="CX_CustomEmojiDesc">自定义表情字体替代原版表情</string>
-    <string name="CX_EnableMLKIT">启用系统级语言AI检测</string>
+    <string name="CX_EnableMLKIT">启用系统级AI语言检测</string>
     <string name="CX_EnableMLKITDesc">禁用时，总是显示翻译按钮</string>
     <string name="CX_DoubleTapReact">禁用快捷回应</string>
     <string name="CX_EnableSAF_Desc">仅用于Android 11+ 。可利用 Google 文件管理器访问外部存储。仅禁用本应用访问所有文件的权限时可用</string>
@@ -64,4 +64,11 @@
     <string name="SaveToDownloadCount_other">%1$d个文件已保存到下载</string>
     <string name="SaveToDownloadCount_two">%1$d个文件已保存到下载</string>
     <string name="SaveToDownloadCount_few">%1$d个文件已保存到下载</string>
+    <string name="CX_ShowProfileBtn">消息菜单添加打开个人资料按钮</string>
+    <string name="CX_DisableParseEntities">禁用输入框文本格式解析</string>
+    <string name="CX_ShowProfile">打开个人资料</string>
+    <string name="CX_Accessibility">易用性</string>
+    <string name="CX_SendParseEntities">以纯文本格式发言</string>
+    <string name="CX_SendDisableParseEntities">以Markdown语法文本发言</string>
+    <string name="CX_DisableParseEntities_Desc">输入特殊格式文本时，禁用Markdown语法解析（包括粗体，斜体，删除线等）</string>
 </resources>

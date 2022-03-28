@@ -56,7 +56,7 @@
     <string name="SaveToDownloadCount_zero">Зберегаємо %1$d файлів в завантаження</string>
     <string name="SaveToDownloadCount_many">Зберегаємо %1$d файлів до завантажень</string>
     <string name="CX_ChangeIcon_Blue_Reg">CatoX Блакитна (від @Qirkl)</string>
-    <string name="CX_ChangeIcon_Cyan_Reg">CatoX Cиньо-зелена (від Qirkl)</string>
+    <string name="CX_ChangeIcon_Cyan_Reg">CatoX Cиньо-Зелена (від Qirkl)</string>
     <string name="CX_ChangeIcon_Green_Reg">CatoX Зелена (від Qirkl)</string>
     <string name="CX_ChangeIcon_Taffy_Reg">CatoX Іриска-Рожева (від Qirkl)</string>
     <string name="CX_DismissStorageDialog2">Щоб остаточно закрити діалогове вікно, надайте дозвіл або увімкніть SAF (Доступ до сховища) в налаштуваннях CatoX.</string>
@@ -64,4 +64,11 @@
     <string name="CX_DBSettingsPin">Налаштування ПІН-коду</string>
     <string name="CX_EnableSAF">Примусовий доступ до сховища</string>
     <string name="CX_EnableMLKIT">Увімкнути виявлення мови ШІ на пристрої</string>
+    <string name="CX_DisableParseEntities">Вимкнути форматування символами</string>
+    <string name="CX_ShowProfile">Показувати профіль</string>
+    <string name="CX_Accessibility">Доступність</string>
+    <string name="CX_ShowProfileBtn">Показати кнопку профілю в контекстному меню</string>
+    <string name="CX_DisableParseEntities_Desc">Відключає форматування при використанні певних символів (наприклад: жирний, курсив, перекреслений тощо.)</string>
+    <string name="CX_SendDisableParseEntities">Відправити без форматування</string>
+    <string name="CX_SendParseEntities">Відправити з форматуванням</string>
 </resources>

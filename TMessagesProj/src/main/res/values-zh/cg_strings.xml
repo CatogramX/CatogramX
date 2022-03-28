@@ -120,9 +120,9 @@
     <string name="AS_KbdWebp_Desc">例如 SKeyboard, GBoard 以及其他受支持的输入法</string>
     <string name="AS_ChangeIcon">应用图标</string>
     <string name="AS_ChangeIcon_Old">默认</string>
-    <string name="AS_ChangeIcon_AltBlue">Cato天蓝图标 (@RKBDI绘制)</string>
-    <string name="AS_ChangeIcon_AltOrange">Cato橙黄图标 (@RKBDI绘制)</string>
-    <string name="AS_ForwardNoAuthorship">无来源转发 [beta]</string>
+    <string name="AS_ChangeIcon_AltBlue">Cato天蓝图标（RKBDI绘制）</string>
+    <string name="AS_ChangeIcon_AltOrange">Cato橙黄图标（RKBDI绘制）</string>
+    <string name="AS_ForwardNoAuthorship">无来源转发</string>
     <string name="AS_ForwardNoAuthorship_Desc">这会让您所进行的所有转发均不显示原作者</string>
     <string name="CG_ForwardMsgDate">显示被转发原消息所发送的时间</string>
     <string name="CG_Translate">翻译</string>
